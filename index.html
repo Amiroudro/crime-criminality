@@ -258,6 +258,7 @@ function toggleHeroTrace(){const h=document.getElementById("homeHero");if(!h)ret
 function moveHeroBackdrop(e){const h=e.currentTarget,r=h.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;h.style.setProperty("--hx",(x*-16)+"px");h.style.setProperty("--hy",(y*-12)+"px");}
 let cigaretteTrailCleanup=null;
 function initCigaretteTrail(){
+  if(cigaretteTrailCleanup)cigaretteTrailCleanup();
   const canvas=document.getElementById("cigaretteTrail");
   if(!canvas||!canvas.getContext||window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
   const ctx=canvas.getContext("2d");if(!ctx)return;
