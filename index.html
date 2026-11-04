@@ -101,9 +101,11 @@ th{font-size:12px}
 
 \n/* Interactive hero backdrop: an evidence-board motif behind the headline */\n.home-hero{position:relative;isolation:isolate;overflow:hidden;border-radius:34px;margin:22px -8px 0;padding:62px 14px 10px;min-height:570px;--hx:0px;--hy:0px}.home-hero .hero-backdrop{position:absolute;z-index:-1;inset:0;pointer-events:none;overflow:hidden;opacity:.95;background:radial-gradient(ellipse at 50% 42%,rgba(247,222,139,.16),transparent 62%),linear-gradient(135deg,rgba(255,253,242,.6),rgba(248,169,139,.08))}.home-hero .hero-backdrop svg{width:100%;height:100%;position:absolute;inset:0;transform:translate3d(var(--hx),var(--hy),0) scale(1.04);transition:transform .18s ease-out}.home-hero .hero-content{position:relative;z-index:1}.home-hero h1{text-shadow:0 2px 18px rgba(255,253,242,.7)}.home-hero p{color:var(--tx);background:color-mix(in srgb,var(--sf) 76%,transparent);backdrop-filter:blur(5px);border:1px solid color-mix(in srgb,var(--bd) 75%,transparent);border-radius:14px;padding:8px 14px}.hero-orbit{transform-box:fill-box;transform-origin:center;animation:heroSpin 48s linear infinite}.hero-dots circle{transform-box:fill-box;transform-origin:center;animation:heroBlink 2.8s ease-in-out infinite}.hero-dots circle:nth-child(2){animation-delay:.7s}.hero-dots circle:nth-child(3){animation-delay:1.4s}.hero-trace{margin-left:8px;background:color-mix(in srgb,var(--sf) 86%,transparent)}.home-hero.tracing .hero-web{stroke-dasharray:9 8;animation:heroDash 1.8s linear infinite}.home-hero.tracing .hero-dots circle{animation-duration:.7s;filter:drop-shadow(0 0 7px #e8412f)}.home-hero.tracing .hero-evidence{filter:drop-shadow(0 0 8px rgba(215,182,107,.55))}@keyframes heroSpin{to{transform:rotate(360deg)}}@keyframes heroBlink{50%{opacity:.35;transform:scale(.65)}}@keyframes heroDash{to{stroke-dashoffset:-34}}@media(max-width:760px){.home-hero{min-height:530px;padding-top:48px;margin-left:-4px;margin-right:-4px}.home-hero .hero-backdrop{opacity:.65}.home-hero .hero-grid{opacity:.55}.home-hero .hero-trace{margin:10px 0 0}}@media(prefers-reduced-motion:reduce){.home-hero .hero-orbit,.home-hero .hero-dots circle,.home-hero.tracing .hero-web{animation:none!important;transition:none!important}}
 
-/* Cursor cigarette and drifting smoke trail (homepage only) */
+/* Custom cigarette cursor and drifting smoke trail (desktop, all sections) */
 #cigaretteTrail{position:fixed;inset:0;width:100%;height:100%;z-index:9999;pointer-events:none;opacity:0;transition:opacity .18s ease}
 #cigaretteTrail.active{opacity:1}
+@media(hover:hover) and (pointer:fine){html,body,body *{cursor:none!important}}
+@media(hover:none),(pointer:coarse){#cigaretteTrail{display:none!important}}
 @media(prefers-reduced-motion:reduce){#cigaretteTrail{display:none!important}}
 /* Homepage visual and interactive learning panels */
 .home-lab{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;align-items:stretch;margin:34px 0}
@@ -137,7 +139,7 @@ th{font-size:12px}
 @media(prefers-reduced-motion:reduce){.lab-art .orbit,.lab-art .pulse-dot{animation:none!important}}
 
 </style></head><body>
-<nav id="nav"></nav><main id="app"></main>
+<nav id="nav"></nav><main id="app"></main><canvas id="cigaretteTrail" aria-hidden="true"></canvas>
 <script>
 const P=[["home","Home"],["crime","Crime"],["criminology","Criminology"],["schools","Schools"],["exam","Essays"],["quiz","Quiz"],["cards","Cards"]];
 let tab=0,qi=0,score=0,ans=false,ci=0,fl=false;
@@ -176,7 +178,6 @@ const pages={
 home:()=>`<section class="hero home-hero" id="homeHero"><div class="hero-backdrop" aria-hidden="true"><svg viewBox="0 0 1100 520" preserveAspectRatio="xMidYMid slice"><defs><radialGradient id="heroGlow"><stop offset="0" stop-color="#f7de8b" stop-opacity=".28"/><stop offset="1" stop-color="#f7de8b" stop-opacity="0"/></radialGradient><linearGradient id="heroLine" x1="0" x2="1"><stop stop-color="#e8412f" stop-opacity=".08"/><stop offset=".5" stop-color="#f7de8b" stop-opacity=".75"/><stop offset="1" stop-color="#2f9e7c" stop-opacity=".08"/></linearGradient></defs><circle cx="550" cy="230" r="245" fill="url(#heroGlow)"/><g class="hero-grid" fill="none" stroke="#8b6254" stroke-opacity=".17"><path d="M0 80H1100M0 160H1100M0 240H1100M0 320H1100M0 400H1100M100 0V520M200 0V520M300 0V520M400 0V520M500 0V520M600 0V520M700 0V520M800 0V520M900 0V520M1000 0V520"/></g><g class="hero-web" fill="none" stroke="url(#heroLine)" stroke-width="2"><path d="M120 350L300 150L510 280L760 105L980 310L810 420L510 280L300 430L120 350"/><path d="M300 150L810 420M760 105L510 280M980 310L760 105"/></g><g class="hero-orbit"><circle cx="550" cy="245" r="178" fill="none" stroke="#a3837a" stroke-opacity=".45" stroke-dasharray="3 11" stroke-width="2"/><circle cx="550" cy="245" r="128" fill="none" stroke="#a3837a" stroke-opacity=".25" stroke-dasharray="2 9"/></g><g class="hero-evidence"><g transform="translate(115 125) rotate(-9)"><rect width="130" height="95" rx="12" fill="#fffdf2" fill-opacity=".8" stroke="#a3837a"/><path d="M18 25h94M18 43h68M18 61h82" stroke="#8a6c60" stroke-width="5" stroke-linecap="round"/><circle cx="102" cy="74" r="9" fill="#e8412f"/></g><g transform="translate(835 100) rotate(8)"><rect width="145" height="105" rx="12" fill="#f7de8b" fill-opacity=".8"/><circle cx="72" cy="49" r="27" fill="none" stroke="#3a1510" stroke-width="3"/><path d="M92 69l25 23" stroke="#3a1510" stroke-width="7" stroke-linecap="round"/><text x="72" y="97" fill="#3a1510" font-size="9" text-anchor="middle">EVIDENCE 02</text></g><g transform="translate(860 340)"><circle r="31" fill="#2f9e7c" fill-opacity=".22" stroke="#2f9e7c" stroke-width="2"/><text y="5" fill="#1a1210" font-size="15" text-anchor="middle" font-weight="700">B</text></g><g transform="translate(230 390)"><circle r="25" fill="#e8412f" fill-opacity=".16" stroke="#e8412f" stroke-width="2"/><text y="5" fill="#1a1210" font-size="15" text-anchor="middle" font-weight="700">A</text></g></g><g class="hero-dots"><circle cx="300" cy="150" r="6" fill="#e8412f"/><circle cx="760" cy="105" r="6" fill="#2f9e7c"/><circle cx="510" cy="280" r="7" fill="#d5a83f"/><circle cx="810" cy="420" r="5" fill="#e8412f"/></g></svg></div><div class="hero-content"><div class="eb">In-course exam studio</div><h1>Ace Crime &amp; Criminality<br>the smart way</h1><p>From concept to confidence: every lecture, theory and thinker, turned into diagrams, essay plans and practice.</p><a class="btn k" href="#schools">Start revising</a><button class="btn hero-trace" type="button" onclick="toggleHeroTrace()" aria-pressed="false">Trace the connections <span aria-hidden="true">↗</span></button></div>
 <div class="stage"><div class="fl x" style="left:2%;top:250px;background:var(--y);animation-delay:-1s"><span>Engagement</span><b>40%</b></div><div class="fl x" style="left:8%;top:50px;background:#fff"><span class="eb">Lecture 3</span><br><b style="font-size:28px">7 schools</b></div><div class="fl" style="right:3%;top:30px;background:var(--s);animation-delay:-2s"><b>4</b>essay plans<br><span class="tg" style="margin-top:6px">12 quiz Qs</span></div><div class="fl x" style="right:6%;top:240px;background:var(--g);color:#fff;animation-delay:-3s"><span>UP TO</span><b>20X</b>faster revision</div>
 <div class="ph"><span class="live">● Live</span>${HERO[2]}<div class="cap"><b>${HERO[0]}</b>${HERO[1]}</div></div></div></section>
-<canvas id="cigaretteTrail" aria-hidden="true"></canvas>
 <section class="home-lab rv" aria-label="Interactive criminology case file">
   <div class="lab-art"><div class="lab-tag">FIELD NOTES / CASE 001</div>
     <svg viewBox="0 0 440 270" role="img" aria-label="Illustrated criminology evidence board with a magnifying glass, evidence markers and connecting lines">
@@ -262,7 +263,7 @@ let cigaretteTrailCleanup=null;
 function initCigaretteTrail(){
   if(cigaretteTrailCleanup)cigaretteTrailCleanup();
   const canvas=document.getElementById("cigaretteTrail");
-  if(!canvas||!canvas.getContext||window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  if(!canvas||!canvas.getContext||window.matchMedia("(prefers-reduced-motion: reduce)").matches||window.matchMedia("(hover: none), (pointer: coarse)").matches)return;
   /* Keep the cursor layer outside the hero so overflow/stacking contexts cannot clip it. */
   if(canvas.parentElement!==document.body)document.body.appendChild(canvas);
   const ctx=canvas.getContext("2d");if(!ctx)return;
@@ -272,7 +273,7 @@ function initCigaretteTrail(){
   function resize(){const dpr=Math.min(window.devicePixelRatio||1,1.6);w=window.innerWidth;h=window.innerHeight;canvas.width=Math.round(w*dpr);canvas.height=Math.round(h*dpr);ctx.setTransform(dpr,0,0,dpr,0,0);}
   function addSmoke(){
     for(let i=0;i<2;i++)particles.push({x:pointer.x+(Math.random()-.5)*5,y:pointer.y+(Math.random()-.5)*5,vx:pointer.vx*.035+(Math.random()-.5)*.45,vy:-.45-Math.random()*.55,size:4+Math.random()*5,life:1,decay:.009+Math.random()*.008,wobble:Math.random()*6.28});
-    if(particles.length>180)particles.splice(0,particles.length-180);
+    if(particles.length>140)particles.splice(0,particles.length-140);
   }
   function drawCigarette(){
     ctx.save();ctx.translate(pointer.x,pointer.y);ctx.rotate(pointer.angle);
@@ -326,7 +327,7 @@ function go(h){cur=pages[h]?h:"home";try{history.replaceState(null,"","#"+cur)}c
 function render(){const k=pages[cur]?cur:"home";
 document.getElementById("nav").innerHTML=`<b>Criminology.</b>`+P.map(p=>`<a href="#${p[0]}" class="${p[0]==k?"on":""}">${p[1]}</a>`).join("")+`<button onclick="tg()" aria-label="Toggle theme">◐</button>`;
 document.getElementById("app").innerHTML=pages[k]();
-const hero=document.getElementById("homeHero");if(hero){hero.addEventListener("pointermove",moveHeroBackdrop,{passive:true});initCigaretteTrail()}else if(cigaretteTrailCleanup){cigaretteTrailCleanup()}
+const hero=document.getElementById("homeHero");if(hero)hero.addEventListener("pointermove",moveHeroBackdrop,{passive:true});initCigaretteTrail();
 const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target)}}),{threshold:.06});
 document.querySelectorAll(".rv").forEach(n=>io.observe(n))}
 function tg(){const r=document.documentElement,d=getComputedStyle(r).colorScheme=="dark";r.setAttribute("data-theme",d?"light":"dark");render()}
