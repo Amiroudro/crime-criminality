@@ -260,6 +260,7 @@ function go(h){cur=pages[h]?h:"home";try{history.replaceState(null,"","#"+cur)}c
 function render(){const k=pages[cur]?cur:"home";
 document.getElementById("nav").innerHTML=`<b>Criminology.</b>`+P.map(p=>`<a href="#${p[0]}" class="${p[0]==k?"on":""}">${p[1]}</a>`).join("")+`<button onclick="tg()" aria-label="Toggle theme">◐</button>`;
 document.getElementById("app").innerHTML=pages[k]();
+const hero=document.getElementById("homeHero");if(hero)hero.addEventListener("pointermove",moveHeroBackdrop,{passive:true});
 const io=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting){x.target.classList.add("in");io.unobserve(x.target)}}),{threshold:.06});
 document.querySelectorAll(".rv").forEach(n=>io.observe(n))}
 function tg(){const r=document.documentElement,d=getComputedStyle(r).colorScheme=="dark";r.setAttribute("data-theme",d?"light":"dark");render()}
