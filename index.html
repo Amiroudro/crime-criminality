@@ -68,7 +68,7 @@ details{background:var(--sf);border:1px solid var(--bd);border-radius:18px;paddi
 @keyframes mspin{to{transform:rotate(360deg)}}
 @keyframes mblink{0%,100%{opacity:.35}50%{opacity:1}}
 .tl div:before{animation:mpulse 2.8s ease-in-out infinite}
-@media(prefers-reduced-motion:reduce){.motion *, .tl div:before{animation:none!important;transition:none!important}}
+@media(prefers-reduced-motion:reduce){.motion *, .tl div:before{transition:none!important}}
 
 /* Readability and contrast refinements */
 body{font-size:16.5px;line-height:1.72}
@@ -97,7 +97,7 @@ th{font-size:12px}
 .crime-result span{font-size:13px;line-height:1.5;flex:1;min-width:180px}
 .crime-note{font-size:13px;color:#e2c9bd;margin:10px 2px 0}
 @media(max-width:560px){.crime-elements{grid-template-columns:1fr;gap:8px}.crime-combine{flex-direction:row;gap:12px}.crime-combine i{width:34px;height:2px}.crime-element{padding:16px}.crime-result{align-items:flex-start;flex-direction:column;gap:3px}}
-@media(prefers-reduced-motion:reduce){.motion *, .tl div:before{animation:none!important;transition:none!important}}
+@media(prefers-reduced-motion:reduce){.motion *, .tl div:before{transition:none!important}}
 </style></head><body>
 <nav id="nav"></nav><main id="app"></main>
 <script>
