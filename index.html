@@ -263,6 +263,8 @@ function initCigaretteTrail(){
   if(cigaretteTrailCleanup)cigaretteTrailCleanup();
   const canvas=document.getElementById("cigaretteTrail");
   if(!canvas||!canvas.getContext||window.matchMedia("(prefers-reduced-motion: reduce)").matches)return;
+  /* Keep the cursor layer outside the hero so overflow/stacking contexts cannot clip it. */
+  if(canvas.parentElement!==document.body)document.body.appendChild(canvas);
   const ctx=canvas.getContext("2d");if(!ctx)return;
   let w=0,h=0,raf=0,active=false,hasPoint=false,lastEmit=0;
   let pointer={x:0,y:0,vx:0,vy:0,angle:0},last={x:0,y:0};
