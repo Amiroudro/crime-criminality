@@ -98,6 +98,38 @@ th{font-size:12px}
 .crime-note{font-size:13px;color:#e2c9bd;margin:10px 2px 0}
 @media(max-width:560px){.crime-elements{grid-template-columns:1fr;gap:8px}.crime-combine{flex-direction:row;gap:12px}.crime-combine i{width:34px;height:2px}.crime-element{padding:16px}.crime-result{align-items:flex-start;flex-direction:column;gap:3px}}
 @media(prefers-reduced-motion:reduce){.motion *, .tl div:before{transition:none!important}}
+
+/* Homepage visual and interactive learning panels */
+.home-lab{display:grid;grid-template-columns:1.05fr .95fr;gap:22px;align-items:stretch;margin:34px 0}
+.lab-art{position:relative;min-height:330px;overflow:hidden;border-radius:28px;background:linear-gradient(145deg,#2b1713,#593126);padding:22px;color:#fff4e9}
+.lab-art .lab-tag{font:600 11px ui-monospace,monospace;letter-spacing:.13em;color:#f7de8b}
+.lab-art svg{width:100%;height:auto;max-height:260px;display:block;margin:12px auto 0}
+.lab-art .orbit{transform-box:fill-box;transform-origin:center;animation:labOrbit 18s linear infinite}
+.lab-art .pulse-dot{animation:labPulse 2s ease-in-out infinite}
+@keyframes labOrbit{to{transform:rotate(360deg)}}
+@keyframes labPulse{50%{opacity:.35;transform:scale(1.35)}}
+.lab-copy{background:var(--sf);border:1px solid var(--bd);border-radius:28px;padding:24px;display:flex;flex-direction:column;justify-content:center}
+.lab-copy h2{font-size:clamp(28px,4vw,42px)}
+.lab-copy p{color:var(--mu)}
+.case-tabs{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0}
+.case-tabs button{border:1px solid var(--bd);border-radius:99px;padding:9px 13px;background:var(--sf);color:var(--tx);font:500 13px Inter;cursor:pointer}
+.case-tabs button.active{background:var(--tx);color:var(--bg);border-color:var(--tx)}
+.case-readout{min-height:106px;border-left:3px solid var(--s);padding:8px 0 8px 14px}
+.case-readout b{display:block;font:400 23px Newsreader,Georgia,serif;margin-bottom:5px}
+.case-readout p{margin:0;font-size:14px}
+.home-path{margin:42px 0}
+.path-card{position:relative;min-height:220px;overflow:hidden;border-radius:24px;padding:20px;color:#1a1210}
+.path-card svg{width:100%;height:105px;display:block;margin:8px auto}
+.path-card a{color:inherit;font-weight:700;text-decoration:none}
+.path-card .path-num{font:400 38px Newsreader,Georgia,serif;opacity:.65}
+.path-card:hover{transform:translateY(-5px);transition:transform .2s}
+.home-quote{display:grid;grid-template-columns:150px 1fr;gap:20px;align-items:center;background:#f4e8e1;color:#1a1210;border-radius:24px;padding:22px;margin:34px 0}
+.home-quote img{width:150px;height:170px;object-fit:cover;object-position:center 20%;border-radius:16px}
+.home-quote blockquote{margin:0;font:400 clamp(21px,3vw,30px)/1.3 Newsreader,Georgia,serif}
+.home-quote cite{display:block;margin-top:12px;font:500 12px Inter;color:#6e625d}
+@media(max-width:760px){.home-lab{grid-template-columns:1fr}.lab-art{min-height:260px}.home-quote{grid-template-columns:90px 1fr}.home-quote img{width:90px;height:120px}}
+@media(prefers-reduced-motion:reduce){.lab-art .orbit,.lab-art .pulse-dot{animation:none!important}}
+
 </style></head><body>
 <nav id="nav"></nav><main id="app"></main>
 <script>
@@ -138,6 +170,35 @@ const pages={
 home:()=>`<section class="hero"><div class="eb">In-course exam studio</div><h1>Ace Crime &amp; Criminality<br>the smart way</h1><p>From concept to confidence: every lecture, theory and thinker, turned into diagrams, essay plans and practice.</p><a class="btn k" href="#schools">Start revising</a>
 <div class="stage"><div class="fl x" style="left:2%;top:250px;background:var(--y);animation-delay:-1s"><span>Engagement</span><b>40%</b></div><div class="fl x" style="left:8%;top:50px;background:#fff"><span class="eb">Lecture 3</span><br><b style="font-size:28px">7 schools</b></div><div class="fl" style="right:3%;top:30px;background:var(--s);animation-delay:-2s"><b>4</b>essay plans<br><span class="tg" style="margin-top:6px">12 quiz Qs</span></div><div class="fl x" style="right:6%;top:240px;background:var(--g);color:#fff;animation-delay:-3s"><span>UP TO</span><b>20X</b>faster revision</div>
 <div class="ph"><span class="live">● Live</span>${HERO[2]}<div class="cap"><b>${HERO[0]}</b>${HERO[1]}</div></div></div></section>
+<section class="home-lab rv" aria-label="Interactive criminology case file">
+  <div class="lab-art"><div class="lab-tag">FIELD NOTES / CASE 001</div>
+    <svg viewBox="0 0 440 270" role="img" aria-label="Illustrated criminology evidence board with a magnifying glass, evidence markers and connecting lines">
+      <path d="M25 218L105 135L180 178L260 80L400 150" fill="none" stroke="#d7b66b" stroke-width="2" stroke-dasharray="5 8" opacity=".8"/>
+      <rect x="30" y="35" width="110" height="132" rx="10" fill="#fff4e9" transform="rotate(-7 85 100)"/><rect x="43" y="49" width="84" height="82" rx="5" fill="#d9b8a2" transform="rotate(-7 85 100)"/>
+      <path d="M61 111Q82 70 109 100M55 143h62M55 153h45" fill="none" stroke="#3a1510" stroke-width="4" stroke-linecap="round" transform="rotate(-7 85 100)"/>
+      <circle cx="260" cy="80" r="48" fill="none" stroke="#f7de8b" stroke-width="12"/><circle cx="260" cy="80" r="31" fill="#f7b6ee" opacity=".9"/><path d="M294 115l53 55" stroke="#f7de8b" stroke-width="15" stroke-linecap="round"/>
+      <circle cx="180" cy="178" r="22" fill="#2f9e7c" stroke="#fff4e9" stroke-width="3"/><text x="180" y="184" fill="#1a1210" font-size="17" text-anchor="middle" font-weight="700">A</text>
+      <circle cx="400" cy="150" r="22" fill="#e8412f" stroke="#fff4e9" stroke-width="3"/><text x="400" y="156" fill="#fff" font-size="17" text-anchor="middle" font-weight="700">B</text>
+      <g class="orbit"><circle cx="260" cy="80" r="63" fill="none" stroke="#fff4e9" stroke-width="1.5" stroke-dasharray="3 7"/></g><circle class="pulse-dot" cx="105" cy="135" r="6" fill="#f7de8b"/>
+      <text x="220" y="250" fill="#fff4e9" font-size="12" text-anchor="middle" letter-spacing="2">OBSERVE · QUESTION · EXPLAIN</text>
+    </svg>
+  </div>
+  <div class="lab-copy"><div class="eb">A small interactive case file</div><h2>One incident. Different explanations.</h2>
+    <p>Criminology asks more than who did it. Explore how the same incident can look different through different theoretical lenses.</p>
+    <div class="case-tabs" role="group" aria-label="Choose a criminological perspective">
+      <button class="active" onclick="casePick(0)">Classical</button><button onclick="casePick(1)">Biological</button><button onclick="casePick(2)">Psychological</button><button onclick="casePick(3)">Sociological</button>
+    </div>
+    <div class="case-readout" id="caseReadout" aria-live="polite"><b>Choice and deterrence</b><p>A classical explanation asks whether the person weighed expected benefits against the risk and severity of punishment.</p></div>
+  </div>
+</section>
+<section class="rv"><div class="eb">Your learning route</div><h2>Explore the subject, not just the menu</h2>
+<div class="grid home-path">
+  <div class="path-card" style="background:#f7de8b"><span class="path-num">01</span><svg viewBox="0 0 180 100" role="img" aria-label="Scales representing legal balance"><path d="M90 18v62M52 80h76M90 20L42 43M90 20l48 23M42 43l-18 27h40L42 43m96 0l-20 27h40l-20-27" fill="none" stroke="#3a1510" stroke-width="4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="90" cy="20" r="7" fill="#e8412f"/></svg><h3>Understand crime</h3><p>Definitions, criminal liability and the elements of an offence.</p><a href="#crime">Open Unit 1 →</a></div>
+  <div class="path-card" style="background:#f8a98b"><span class="path-num">02</span><svg viewBox="0 0 180 100" role="img" aria-label="Magnifying glass over a fingerprint"><circle cx="75" cy="42" r="29" fill="none" stroke="#3a1510" stroke-width="5"/><path d="M96 64l33 29" stroke="#3a1510" stroke-width="8" stroke-linecap="round"/><path d="M61 42q14-22 28 0q-14 22-28 0m-8 0q22-34 44 0" fill="none" stroke="#e8412f" stroke-width="3"/></svg><h3>Study criminology</h3><p>Its scope, scientific methods and historical development.</p><a href="#criminology">Open Unit 2 →</a></div>
+  <div class="path-card" style="background:#f7b6ee"><span class="path-num">03</span><svg viewBox="0 0 180 100" role="img" aria-label="Connected nodes representing criminological theories"><g stroke="#3a1510" stroke-width="3"><path d="M40 50L90 20L140 50L90 80Z M40 50L140 50"/></g><circle cx="40" cy="50" r="11" fill="#f7de8b"/><circle cx="90" cy="20" r="11" fill="#2f9e7c"/><circle cx="140" cy="50" r="11" fill="#e8412f"/><circle cx="90" cy="80" r="11" fill="#9db8f2"/></svg><h3>Compare theories</h3><p>See how schools explain causes, responsibility and prevention.</p><a href="#schools">Explore the schools →</a></div>
+  <div class="path-card" style="background:#9db8f2"><span class="path-num">04</span><svg viewBox="0 0 180 100" role="img" aria-label="Open notebook representing exam practice"><path d="M45 15h88v70H45zM57 30h62M57 44h62M57 58h45M35 22v65" fill="none" stroke="#3a1510" stroke-width="4" stroke-linecap="round"/><path d="M108 68l9 9 18-22" fill="none" stroke="#2f9e7c" stroke-width="5" stroke-linecap="round"/></svg><h3>Prepare for the exam</h3><p>Practise questions and retrieve key thinkers with flashcards.</p><a href="#quiz">Start a quiz →</a></div>
+</div></section>
+<section class="home-quote rv"><img src="https://commons.wikimedia.org/wiki/Special:FilePath/Cesare_Beccaria.jpg?width=500" alt="Historical portrait of Cesare Beccaria" loading="lazy"><div><blockquote>“The aim of punishment is not to torment a sensible being, but to prevent others from committing the like offence.”</blockquote><cite>CESARE BECCARIA · ON CRIMES AND PUNISHMENTS (1764)</cite></div></section>
 <section class="rv"><div class="eb">Thinkers who shaped the field</div><h2>People behind the theories</h2><div class="row">${TH.map(t=>`<div class="th">${t[2]}<b>${t[0]}</b><small>${t[1]}</small></div>`).join("")}</div>
 <details class="portrait-credits"><summary>Portrait image credits &amp; licences</summary>
 <ul>
@@ -180,6 +241,19 @@ return`<section class="hero" style="padding-bottom:10px"><div class="eb">Questio
 cards:()=>{const c=FC[ci];return`<section class="hero" style="padding-bottom:0"><div class="eb">Card ${ci+1} of ${FC.length}</div><h1>Flashcards</h1></section><div class="fc ${fl?"f":""}" onclick="fl=!fl;render()"><div><span>${c[0]}</span><span>${c[1]}</span></div></div><button class="btn" onclick="ci=(ci+FC.length-1)%FC.length;fl=false;render()">← Prev</button> <button class="btn k" onclick="ci=(ci+1)%FC.length;fl=false;render()">Next →</button> <button class="btn" onclick="ci=Math.floor(Math.random()*FC.length);fl=false;render()">Shuffle</button>`}};
 const QZ=[["Who first used “criminologie” (1879)?",["Lombroso","Paul Topinard","Sutherland","Becker"],1,"Topinard, French anthropologist."],["Which school stressed free will and swift, proportionate punishment?",["Classical","Positivist","Pre-classical","Radical"],0,"Beccaria and Bentham."],["Lombroso’s central idea?",["Anomie","Born criminal type","Social contract","Labelling"],1,"Atavism and degeneracy."],["Actus reus means…",["Guilty mind","Guilty act","Intent","Defence"],1,"Mens rea is the guilty mind."],["Who defined crime as an act or omission sanctioned as felony or misdemeanour?",["Sellin","Caldwell","Tappon","Quinney"],2,"Paul Tappon, 1960."],["Which perspective sees criminals as victims of capitalism?",["Liberal","Radical","Conservative","Classical"],1,"Radical criminology."],["Delinquency areas relate to…",["Differential association","Social disorganisation","Strain","Cognitive theory"],1,"Congestion, poor housing, weak control."],["Blocked goals and illegitimate means describe…",["Strain","Labelling","Psychodynamic","Geographical"],0,"Merton’s strain."],["Penology deals with…",["Detection","Punishment","Victims","Law-making"],1,"The punitive aspects."],["Bonger linked crime to…",["Climate","Capitalism and egoism","Heredity","Imitation"],1,"Less altruism, more egoism."],["Differential association was developed by…",["Sutherland","Becker","Merton","Eysenck"],0,"Crime is learned in intimate groups."],["Gibbons &amp; Garabedian’s perspectives…",["Classical, positivist, radical","Liberal, radical, conservative","Biological, social, legal","Old, new, modern"],1,"1974."]];
 const FC=[["Crimen","Latin: fault, offence, guilt"],["Tannenbaum","Crime is as eternal as society"],["Alfieri","Society prepares crimes, the criminal commits them"],["Clinard 1957","Tolerated, mildly or strongly disapproved; the last is crime"],["Mens rea / Actus reus","Guilty mind / guilty act"],["Sutherland","Making, breaking, reacting to laws"],["Traft","Explanation · detection · prevention · punishment"],["Beccaria","Free will, proportionate and swift punishment"],["Bentham","Pain–pleasure; greatest happiness"],["Lombroso","Born criminal; atavism"],["Fornasari 1894","85–90% of Italian criminals poor"],["Bonger","Capitalism breeds egoism"],["Liberal","1940–50: environment; rehabilitation"],["Radical","1960–70: capitalism; change system"],["Conservative","1970–90: moral defect; deterrence"],["Sociological approaches","Disorganisation · structural · processual · sub-cultural"]];
+
+const CASES=[
+["Choice and deterrence","A classical explanation asks whether the person weighed expected benefits against the risk and severity of punishment."],
+["Individual traits","A biological perspective would investigate possible individual and biological factors, while avoiding the outdated assumption that appearance determines criminality."],
+["Learning and thinking","A psychological explanation might examine learned behaviour, decision-making, personality, impulse control and the person's experiences."],
+["Social environment","A sociological explanation asks about peer groups, inequality, blocked opportunities, neighbourhood conditions and social labels."]
+];
+function casePick(i){
+  const box=document.getElementById("caseReadout");if(!box)return;
+  box.innerHTML="<b>"+CASES[i][0]+"</b><p>"+CASES[i][1]+"</p>";
+  document.querySelectorAll(".case-tabs button").forEach((b,n)=>b.classList.toggle("active",n===i));
+}
+
 function pick(i){ans=i;if(i==QZ[qi][2])score++;render()}
 let cur=(location.hash||"#home").slice(1);
 function go(h){cur=pages[h]?h:"home";try{history.replaceState(null,"","#"+cur)}catch(e){try{location.hash=cur}catch(e2){}}render();window.scrollTo(0,0)}
