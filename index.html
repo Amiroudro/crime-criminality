@@ -248,7 +248,10 @@ const CASES=[
 ["Learning and thinking","A psychological explanation might examine learned behaviour, decision-making, personality, impulse control and the person's experiences."],
 ["Social environment","A sociological explanation asks about peer groups, inequality, blocked opportunities, neighbourhood conditions and social labels."]
 ];
-\nfunction toggleHeroTrace(){const h=document.getElementById("homeHero");if(!h)return;const active=h.classList.toggle("tracing");const b=h.querySelector(".hero-trace");if(b){b.setAttribute("aria-pressed",String(active));b.innerHTML=active?"Connections highlighted <span aria-hidden=\"true\">✓</span>":"Trace the connections <span aria-hidden=\"true\">↗</span>";}}\nfunction moveHeroBackdrop(e){const h=e.currentTarget,r=h.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;h.style.setProperty("--hx",(x*-16)+"px");h.style.setProperty("--hy",(y*-12)+"px");}\nfunction casePick(i){
+
+function toggleHeroTrace(){const h=document.getElementById("homeHero");if(!h)return;const active=h.classList.toggle("tracing");const b=h.querySelector(".hero-trace");if(b){b.setAttribute("aria-pressed",String(active));b.innerHTML=active?"Connections highlighted <span aria-hidden=\"true\">✓</span>":"Trace the connections <span aria-hidden=\"true\">↗</span>";}}
+function moveHeroBackdrop(e){const h=e.currentTarget,r=h.getBoundingClientRect(),x=(e.clientX-r.left)/r.width-.5,y=(e.clientY-r.top)/r.height-.5;h.style.setProperty("--hx",(x*-16)+"px");h.style.setProperty("--hy",(y*-12)+"px");}
+function casePick(i){
   const box=document.getElementById("caseReadout");if(!box)return;
   box.innerHTML="<b>"+CASES[i][0]+"</b><p>"+CASES[i][1]+"</p>";
   document.querySelectorAll(".case-tabs button").forEach((b,n)=>b.classList.toggle("active",n===i));
